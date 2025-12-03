@@ -1,0 +1,100 @@
+<div class="wrapper">
+  <div class="section-lista">
+    <div class="header-lista">
+      <button mat-icon-button (click)="goHome()" class="btn-back">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <div class="title-user">Lista de Materias</div>
+    </div>
+
+    <!-- Buscador -->
+    <mat-form-field appearance="outline" class="search-input">
+      <mat-label>Buscar por NRC o Materia</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ej. Ingeniería..." #input>
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <div class="table-container mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <!-- NRC Columna -->
+        <ng-container matColumnDef="nrc">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> NRC </th>
+          <td mat-cell *matCellDef="let element"> {{element.nrc}} </td>
+        </ng-container>
+
+        <!-- Nombre Columna -->
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Materia </th>
+          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+        </ng-container>
+
+        <!-- Sección Columna -->
+        <ng-container matColumnDef="seccion">
+          <th mat-header-cell *matHeaderCellDef> Sección </th>
+          <td mat-cell *matCellDef="let element"> {{element.seccion}} </td>
+        </ng-container>
+
+        <!-- Días Columna -->
+        <ng-container matColumnDef="dias">
+          <th mat-header-cell *matHeaderCellDef> Días </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.dias.join(', ') }}
+          </td>
+        </ng-container>
+
+        <!-- Horario Columna -->
+        <ng-container matColumnDef="horario">
+          <th mat-header-cell *matHeaderCellDef> Horario </th>
+          <td mat-cell *matCellDef="let element"> {{element.hora_inicio}} - {{element.hora_fin}} </td>
+        </ng-container>
+
+        <!-- Salón Columna -->
+        <ng-container matColumnDef="salon">
+          <th mat-header-cell *matHeaderCellDef> Salón </th>
+          <td mat-cell *matCellDef="let element"> {{element.salon}} </td>
+        </ng-container>
+
+         <!-- Programa Columna -->
+         <ng-container matColumnDef="programa">
+          <th mat-header-cell *matHeaderCellDef> Programa </th>
+          <td mat-cell *matCellDef="let element"> {{element.programa_educativo}} </td>
+        </ng-container>
+
+        <!-- Profesor Columna (Nombre del profe) -->
+        <ng-container matColumnDef="profesor">
+          <th mat-header-cell *matHeaderCellDef> Profesor </th>
+          <td mat-cell *matCellDef="let element">
+             {{ element.profesor_nombre || element.profesor?.user?.first_name || 'Sin asignar' }}
+          </td>
+        </ng-container>
+
+        <!-- Acciones Columna -->
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef> Acciones </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="action-buttons">
+              <button mat-icon-button color="primary" (click)="editarMateria(element.id)" matTooltip="Editar">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="eliminarMateria(element.id)" matTooltip="Eliminar">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="9" style="text-align: center; padding: 20px;">
+            No se encontraron datos
+          </td>
+        </tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+</div>

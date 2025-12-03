@@ -1,0 +1,171 @@
+/* ==============================
+   CONTENEDOR GENERAL
+================================ */
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  padding: 30px;
+  background: linear-gradient(135deg, #f2f4f8 0%, #eef1f6 100%);
+  display: flex;
+  justify-content: center;
+}
+
+/* ==============================
+   SECCIÓN PRINCIPAL
+================================ */
+.section-lista {
+  width: 100%;
+  max-width: 1200px;
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 14px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* ==============================
+   HEADER DE LA PÁGINA
+================================ */
+.header-lista {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.btn-back {
+  margin-left: -10px;
+  color: #555;
+  transition: 0.3s ease;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.btn-back:hover {
+  color: #23395d;
+  background-color: rgba(35,57,93,0.1);
+}
+
+.title-user {
+  font-family: 'Nexa-Bold', sans-serif;
+  font-size: 2rem;
+  color: #23395d;
+  margin: 0;
+}
+
+/* Línea decorativa */
+.header-lista::after {
+  content: "";
+  height: 2px;
+  flex: 1;
+  background: #ddd;
+  margin-left: 10px;
+}
+
+/* ==============================
+   BUSCADOR
+================================ */
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.search-input input {
+  background: #fff;
+  border-radius: 6px !important;
+  padding: 10px 14px !important;
+  font-size: 15px;
+}
+
+/* ==============================
+   TABLA
+================================ */
+.table-container {
+  overflow: auto;
+  border-radius: 10px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+/* Encabezados */
+th.mat-header-cell {
+  background-color: #23395d !important;
+  color: white !important;
+  font-family: 'Nexa-Bold', sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 12px !important;
+}
+
+/* Celdas */
+td.mat-cell {
+  font-size: 14px;
+  color: #333;
+  padding: 12px !important;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+tr.mat-row:hover {
+  background-color: #f7f9fc !important;
+}
+
+/* ==============================
+   BOTONES DE ACCIÓN
+================================ */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.action-buttons button {
+  border-radius: 6px !important;
+  padding: 4px 10px !important;
+  min-width: 36px;
+  transition: 0.2s ease-in-out;
+}
+
+.action-buttons button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+/* ==============================
+   RESPONSIVE
+================================ */
+@media(max-width: 900px) {
+  .section-lista {
+    padding: 20px;
+  }
+}
+
+@media(max-width: 800px){
+  .wrapper { padding: 10px; }
+
+  .header-lista {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-lista::after {
+    display: none;
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .title-user {
+    font-size: 1.6rem;
+  }
+}
+
+/* ==============================
+   ANIMACIONES
+================================ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

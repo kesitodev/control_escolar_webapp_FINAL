@@ -1,0 +1,151 @@
+/* ============================
+   DISEÑO MODERNO PARA REGISTRO
+   ============================ */
+
+/* Fondo general */
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #e9f0ff, #ffffff);
+  display: flex;
+  justify-content: center;
+}
+
+/* Contenedor principal */
+.section-registro {
+  width: 100%;
+  max-width: 950px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 40px 45px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  animation: fadeIn 0.4s ease;
+}
+
+/* Título del formulario */
+.title-user {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #23395d;
+  border-left: 5px solid #4b6cb7;
+  padding-left: 15px;
+  margin-bottom: 30px;
+}
+
+/* Sección */
+.section-header {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #23395d;
+  background: #eef3ff;
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+/* Inputs general */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 10px;
+
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #b0c4de;
+  }
+
+  .mat-form-field-flex {
+    border-radius: 6px !important;
+  }
+}
+
+/* Errores */
+.error-msg {
+  color: #d9534f;
+  font-size: 12px;
+  margin-top: -5px;
+  margin-bottom: 12px;
+}
+
+/* Sección de checkboxes */
+.checkbox-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding: 18px;
+  background: #f7f9fc;
+  border-radius: 10px;
+  border: 1px solid #e0e6f0;
+
+  mat-checkbox {
+    font-size: 14px;
+  }
+}
+
+/* Botones */
+.section-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 35px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+
+.btn {
+  height: 45px;
+  border-radius: 6px;
+  padding: 0 35px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: .4px;
+  transition: 0.3s;
+}
+
+/* Cancelar */
+.btn-danger {
+  background-color: #fff;
+  border: 1px solid #d9534f;
+  color: #d9534f;
+
+  &:hover {
+    background-color: #fff5f5;
+  }
+}
+
+/* Registrar / Actualizar */
+.btn-primary {
+  background: linear-gradient(135deg, #23395d, #4b6cb7);
+  color: #fff;
+  border: none;
+
+  &:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section-registro {
+    padding: 25px;
+  }
+
+  .title-user {
+    font-size: 1.6rem;
+  }
+
+  .section-buttons {
+    flex-direction: column-reverse;
+
+    .btn {
+      width: 100%;
+    }
+  }
+}
+
+/* Animación suave */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
