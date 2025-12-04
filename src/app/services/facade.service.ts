@@ -11,7 +11,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
-//Estas son variables para las cookies
+// Variables para las cookies
 const session_cookie_name = 'control-escolar-token';
 const user_email_cookie_name = 'control-escolar-email';
 const user_id_cookie_name = 'control-escolar-user_id';
@@ -32,23 +32,23 @@ export class FacadeService {
     private errorService: ErrorsService,
   ) { }
 
-  //Funcion para validar login
+  // Funcion para validar login
   public validarLogin(username: String, password: String){
     let data = {
       "username": username,
       "password": password
     };
 
-    console.log("Valindando login con datos: ", data);
+    console.log("Validando login con datos: ", data);
 
     let error: any = {};
 
-    //Validaciones
+    // Validaciones
     if(!this.validatorService.required(data["username"])){
       error["username"] = this.errorService.required;
-    }else if(!this.validatorService.max(data["username"], 40)){
+    } else if(!this.validatorService.max(data["username"], 40)){
       error["username"] = this.errorService.max(40);
-    }else if (!this.validatorService.email(data['username'])) {
+    } else if (!this.validatorService.email(data['username'])) {
       error['username'] = this.errorService.email;
     }
 
@@ -59,38 +59,41 @@ export class FacadeService {
     return error;
   }
 
-  //Iniciar sesión
-  public login(username:String, password:String): Observable<any> {
+  // Iniciar sesión - CORREGIDO
+  public login(username: String, password: String): Observable<any> {
     let data = {
       username: username,
       password: password
     }
-    return this.http.post<any>(`${`${environment.apiUrl}/alumnos/`}/login/`,data);
+    // CORRECTO: Una sola interpolación
+    return this.http.post<any>(`${environment.apiUrl}/alumnos/login/`, data);
   }
 
-  //Cerrar sesión
+  // Cerrar sesión - CORREGIDO
   public logout(): Observable<any> {
     let headers: any;
     let token = this.getSessionToken();
-    headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
-    return this.http.get<any>(`${`${environment.apiUrl}/alumnos/`}/logout/`, {headers: headers});
+    headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token });
+    // CORRECTO: Una sola interpolación
+    return this.http.get<any>(`${environment.apiUrl}/logout/`, { headers: headers });
   }
 
-  // Funciones para utilizar las cookies en web
+  // Funciones para utilizar las cookies en web - CORREGIDO
   retrieveSignedUser(){
     var headers: any;
     var token = this.getSessionToken();
-    headers = new HttpHeaders({'Authorization': 'Bearer '+token});
-    return this.http.get<any>(`${`${environment.apiUrl}/alumnos/`}/me/`,{headers:headers});
+    headers = new HttpHeaders({'Authorization': 'Bearer ' + token });
+    // CORRECTO: Una sola interpolación
+    return this.http.get<any>(`${environment.apiUrl}/alumnos/me/`, { headers: headers });
   }
 
-  getCookieValue(key:string){
+  getCookieValue(key: string){
     return this.cookieService.get(key);
   }
 
-  saveCookieValue(key:string, value:string){
-    var secure = environment.apiUrl.indexOf("https")!=-1;
-    this.cookieService.set(key, value, undefined, undefined, undefined, secure, secure?"None":"Lax");
+  saveCookieValue(key: string, value: string){
+    var secure = environment.apiUrl.indexOf("https") != -1;
+    this.cookieService.set(key, value, undefined, undefined, undefined, secure, secure ? "None" : "Lax");
   }
 
   saveUserData(user_data: any) {
