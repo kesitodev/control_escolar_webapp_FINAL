@@ -125,21 +125,21 @@ export class MateriasService {
     const token = this.facadeService.getSessionToken();
     let headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
     if (token) headers = headers.set('Authorization', 'Bearer ' + token);
-    return this.http.post<any>(`${environment.url_api}/materia/`, data, { headers });
+    return this.http.post<any>(`${environment.apiUrl}/materia/`, data, { headers });
   }
 
   public obtenerListaMaterias(): Observable<any> {
     const token = this.facadeService.getSessionToken();
     let headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
     if (token) headers = headers.set('Authorization', 'Bearer ' + token);
-    return this.http.get<any>(`${environment.url_api}/lista-materias/`, { headers });
+    return this.http.get<any>(`${environment.apiUrl}/lista-materias/`, { headers });
   }
 
   public obtenerMateriaPorID(idMateria: number): Observable<any> {
     const token = this.facadeService.getSessionToken();
     let headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
     if (token) headers = headers.set('Authorization', 'Bearer ' + token);
-    return this.http.get<any>(`${environment.url_api}/materia/?id=${idMateria}`, { headers });
+    return this.http.get<any>(`${environment.apiUrl}/materia/?id=${idMateria}`, { headers });
   }
 
   public actualizarMateria(idMateria: number, data: any): Observable<any> {
@@ -149,7 +149,7 @@ export class MateriasService {
 
   const payload = { ...data, id: idMateria };
 
-  return this.http.put<any>(`${environment.url_api}/materia/`, payload, { headers });
+  return this.http.put<any>(`${environment.apiUrl}/materia/`, payload, { headers });
 }
 
 
@@ -157,6 +157,6 @@ export class MateriasService {
     const token = this.facadeService.getSessionToken();
     let headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
     if (token) headers = headers.set('Authorization', 'Bearer ' + token);
-    return this.http.delete<any>(`${environment.url_api}/materia/?id=${idMateria}`, { headers });
+    return this.http.delete<any>(`${environment.apiUrl}/materia/?id=${idMateria}`, { headers });
   }
 }

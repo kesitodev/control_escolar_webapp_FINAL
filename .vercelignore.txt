@@ -1,0 +1,52 @@
+# Ignorar todo lo innecesario
+.angular/
+node_modules/
+dist/
+.vscode/
+.idea/
+.git/
+*.log
+*.zip
+*.rar
+*.tar
+*.gz
+
+# Ignorar archivos de desarrollo
+coverage/
+
+# Ignorar archivos de entorno (pero ten cuidado, quizás necesites algunos)
+.env
+.env.local
+.env.development
+.env.production
+
+# Ignorar archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar archivos de backups
+*.bak
+*.tmp
+
+# Ignorar archivos de log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignorar archivos de configuración de editores
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# Ignorar archivos de producción que se generan
+dist/*
+
+# Pero NO ignorar los siguientes (necesarios para el build):
+# !package.json
+# !package-lock.json
+# !angular.json
+# !tsconfig.json
+# !src/
+# !public/ (si existe)

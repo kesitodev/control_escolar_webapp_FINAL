@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  url_api: 'https://escolar-api.onrender.com'
+  apiUrl: 'https://control-escolar-api-final.onrender.com'  // ¡ESTA ES LA URL CORRECTA!
 };

@@ -132,7 +132,7 @@ export class AlumnosService {
     } else {
       headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     }
-    return this.http.post<any>(`${environment.url_api}/alumnos/`, data, {
+    return this.http.post<any>(`${`${environment.apiUrl}/alumnos/`}/alumnos/`, data, {
       headers,
     });
   }
@@ -150,7 +150,7 @@ export class AlumnosService {
     } else {
       headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     }
-    return this.http.get<any>(`${environment.url_api}/lista-alumnos/`, {
+    return this.http.get<any>(`${`${environment.apiUrl}/alumnos/`}/lista-alumnos/`, {
       headers,
     });
   }
@@ -165,7 +165,7 @@ export class AlumnosService {
     } else {
       headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     }
-    return this.http.get<any>(`${environment.url_api}/alumnos/?id=${idAlumno}`, { headers });
+    return this.http.get<any>(`${`${environment.apiUrl}/alumnos/`}/alumnos/?id=${idAlumno}`, { headers });
   }
 
    // Petición para actualizar un administrador
@@ -178,7 +178,7 @@ export class AlumnosService {
       headers = new HttpHeaders({ 'Content-Type': 'application/json' });
       console.log("No se encontró el token del usuario");
     }
-    return this.http.put<any>(`${environment.url_api}/alumnos/`, data, { headers });
+    return this.http.put<any>(`${`${environment.apiUrl}/alumnos/`}/alumnos/`, data, { headers });
   }
 
   //Servicio para eliminar un maestro
@@ -191,13 +191,7 @@ export class AlumnosService {
     } else {
       headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     }
-    return this.http.delete<any>(`${environment.url_api}/alumnos/?id=${idAlumno}`, { headers });
+    return this.http.delete<any>(`${`${environment.apiUrl}/alumnos/`}/alumnos/?id=${idAlumno}`, { headers });
   }
-
-
-
-
-
-
 
 }

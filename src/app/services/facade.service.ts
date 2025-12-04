@@ -65,7 +65,7 @@ export class FacadeService {
       username: username,
       password: password
     }
-    return this.http.post<any>(`${environment.url_api}/login/`,data);
+    return this.http.post<any>(`${`${environment.apiUrl}/alumnos/`}/login/`,data);
   }
 
   //Cerrar sesión
@@ -73,7 +73,7 @@ export class FacadeService {
     let headers: any;
     let token = this.getSessionToken();
     headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
-    return this.http.get<any>(`${environment.url_api}/logout/`, {headers: headers});
+    return this.http.get<any>(`${`${environment.apiUrl}/alumnos/`}/logout/`, {headers: headers});
   }
 
   // Funciones para utilizar las cookies en web
@@ -81,7 +81,7 @@ export class FacadeService {
     var headers: any;
     var token = this.getSessionToken();
     headers = new HttpHeaders({'Authorization': 'Bearer '+token});
-    return this.http.get<any>(`${environment.url_api}/me/`,{headers:headers});
+    return this.http.get<any>(`${`${environment.apiUrl}/alumnos/`}/me/`,{headers:headers});
   }
 
   getCookieValue(key:string){
@@ -89,12 +89,12 @@ export class FacadeService {
   }
 
   saveCookieValue(key:string, value:string){
-    var secure = environment.url_api.indexOf("https")!=-1;
+    var secure = environment.apiUrl.indexOf("https")!=-1;
     this.cookieService.set(key, value, undefined, undefined, undefined, secure, secure?"None":"Lax");
   }
 
   saveUserData(user_data: any) {
-    var secure = environment.url_api.indexOf("https") !== -1;
+    var secure = environment.apiUrl.indexOf("https") !== -1;
     // Soporta respuesta plana o anidada en 'user'
     let id = user_data.id || user_data.user?.id;
     let email = user_data.email || user_data.user?.email;

@@ -119,7 +119,7 @@ export class MaestrosService {
     } else {
       headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     }
-    return this.http.post<any>(`${environment.url_api}/maestros/`, data, { headers });
+    return this.http.post<any>(`${`${environment.apiUrl}/alumnos/`}/maestros/`, data, { headers });
   }
 
   //Servicio para obtener la lista de maestros
@@ -132,7 +132,7 @@ export class MaestrosService {
     } else {
       headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     }
-    return this.http.get<any>(`${environment.url_api}/lista-maestros/`, { headers });
+    return this.http.get<any>(`${environment.apiUrl}/lista-maestros/`, { headers });
   }
 
   //Servicio para obtener un maestro por su ID
@@ -145,7 +145,7 @@ export class MaestrosService {
     } else {
       headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     }
-    return this.http.get<any>(`${environment.url_api}/maestros/?id=${idMaestro}`, { headers });
+    return this.http.get<any>(`${environment.apiUrl}/maestros/?id=${idMaestro}`, { headers });
   }
 
    // Petición para actualizar un administrador
@@ -158,7 +158,7 @@ export class MaestrosService {
       headers = new HttpHeaders({ 'Content-Type': 'application/json' });
       console.log("No se encontró el token del usuario");
     }
-return this.http.put<any>(`${environment.url_api}/maestros/?id=${data.id}`, data, { headers });  }
+return this.http.put<any>(`${environment.apiUrl}/maestros/?id=${data.id}`, data, { headers });  }
 
   //Servicio para eliminar un maestro
   public eliminarMaestro(idMaestro: number): Observable<any>{
@@ -170,6 +170,6 @@ return this.http.put<any>(`${environment.url_api}/maestros/?id=${data.id}`, data
     } else {
       headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     }
-    return this.http.delete<any>(`${environment.url_api}/maestros/?id=${idMaestro}`, { headers });
+    return this.http.delete<any>(`${environment.apiUrl}/maestros/?id=${idMaestro}`, { headers });
   }
 }
